@@ -1,10 +1,11 @@
 public class CreditPaymentService {
 
-    public int calculate(int sum, float monthProcent, double razdel) {
+    public int calculate(int sum, double percent, int period) {
 
-        int platezh = (int) (sum * (monthProcent + (monthProcent / razdel)));
+        double payment = (((percent / 1200 * (Math.pow((1 + percent / 1200), period)))
+                / (Math.pow((1 + percent / 1200), period) - 1)) * sum);
 
-
-        return platezh;
+        return (int) payment;
     }
+
 }
